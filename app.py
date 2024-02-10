@@ -1,33 +1,79 @@
-from src.mlproject.logger import logging
-from src.mlproject.exception import CustomException
-from src.mlproject.components.data_ingestion import DataIngestion
-from src.mlproject.components.model_tranier import *
+# from flask import Flask, request, render_template
+# # from flask import 
+# from src.mlproject.pipelines.prediction_pipeline import CustomData, PredictPipeline
 
-from src.mlproject.components.data_transformation import *
-import sys
+# application = Flask(__name__)
+# app = application
 
+# # Route for a home page
+# # @app.route('/')
+# # def index():
+# #     return render_template('test.html')
 
-if __name__=="__main__":
-    logging.info("The execution has started")
-
-
-    try:
-        data_ingestion=DataIngestion()
-        train_data_path,test_data_path=data_ingestion.initiate_data_ingestion()
-
-        data_transformation_config=DataTransformationConfig()
-        data_transformation=DataTransformation()
-        train_arr,test_arr,_=data_transformation.initiate_data_transormation(train_data_path,test_data_path)
-
-        model_trainer=ModelTrainer()
-        print(model_trainer.initiate_model_trainer(train_arr,test_arr))
-
-
-    except Exception as e:
-        logging.info("Custom Exception")
-        raise CustomException(e,sys)
-    # except Exception as e:
-    #     logging.info("Custom exception")
-    #     raise CustomException(e,sys)
+# # Route for predicting data
+# @app.route('/', methods=['GET', 'POST'])
+# def predict_datapoint():
     
-    print("THIS IS DRY RUNNING OF DIFFERENT CLASSES")
+#     if request.method == 'GET':
+#         return render_template('result.html')
+#     else:
+#         data = CustomData(
+#             age=float(request.form.get('age')),
+#             sex=request.form.get('sex'),
+#             bmi=float(request.form.get('bmi')),
+#             children=float(request.form.get('children')),
+#             smoker=request.form.get('smoker'),
+#             region=request.form.get('region')
+#         )
+#         pred_df = data.get_data_as_data_frame()
+
+#         predict_pipeline = PredictPipeline()
+#         results = predict_pipeline.predict(pred_df)
+
+#         # Include the form values in the rendered template
+#         return render_template('result.html', results="{:.2f}".format(results[0]), age=data.age, sex=data.sex, bmi=data.bmi, children=data.children, smoker=data.smoker, region=data.region)
+
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=8080)
+    
+
+
+
+from flask import Flask, request, render_template
+from src.mlproject.pipelines.prediction_pipeline import CustomData, PredictPipeline
+
+application = Flask(__name__)
+app = application
+
+# Route for predicting data
+@app.route('/', methods=['GET', 'POST'])
+def predict_datapoint():
+    
+    if request.method == 'GET':
+        return render_template('result.html')
+    else:
+        data = CustomData(
+            CreditScore=float(request.form.get('CreditScore')),
+            Geography=request.form.get('Geography'),
+            Gender=request.form.get('Gender'),
+            Age=int(request.form.get('Age')),
+            Tenure=int(request.form.get('Tenure')),
+            Balance=float(request.form.get('Balance')),
+            NumOfProducts=int(request.form.get('NumOfProducts')),
+            HasCrCard=int(request.form.get('HasCrCard')),
+            IsActiveMember=int(request.form.get('IsActiveMember')),
+            EstimatedSalary=float(request.form.get('EstimatedSalary'))
+        )
+        pred_df = data.get_data_as_data_frame()
+
+        predict_pipeline = PredictPipeline()
+        results = predict_pipeline.predict(pred_df)
+
+        # Include the form values in the rendered template
+        return render_template('result.html', results="{:.2f}".format(results[0]), **request.form)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
+
+
+# http://127.0.0.1:5000/

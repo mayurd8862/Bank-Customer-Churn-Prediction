@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>Insurance Cost Prediction</title>
+</head>
+<body>
+    <div class="insurance-form">
+        <h1>Insurance Cost Prediction</h1>
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Credit Score</label>
+                <input class="form-control" type="number" name="CreditScore" placeholder="Enter your credit score" min="0" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Geography</label>
+                <select class="form-control" name="Geography" required>
+                    <option class="placeholder" selected disabled value="">Select your country</option>
+                    <option value="France">France</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Germany">Germany</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-control" name="Gender" required>
+                    <option class="placeholder" selected disabled value="">Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input class="form-control" type="number" name="Age" placeholder="Enter your age" min="0" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tenure</label>
+                <input class="form-control" type="number" name="Tenure" placeholder="Enter your tenure" min="0" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Balance</label>
+                <input class="form-control" type="number" name="Balance" placeholder="Enter your balance" min="0" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Number of Products</label>
+                <input class="form-control" type="number" name="NumOfProducts" placeholder="Enter the number of products" min="0" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Has Credit Card</label>
+                <select class="form-control" name="HasCrCard" required>
+                    <option class="placeholder" selected disabled value="">Select if you have a credit card</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Is Active Member</label>
+                <select class="form-control" name="IsActiveMember" required>
+                    <option class="placeholder" selected disabled value="">Select if you are an active member</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Estimated Salary</label>
+                <input class="form-control" type="number" name="EstimatedSalary" placeholder="Enter your estimated salary" min="0" required />
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict Insurance Cost" required />
+            </div>
+        </form>
+        <h2>
+            The predicted insurance cost is {{results}}
+        </h2>
+    </div>
+</body>
+</html>

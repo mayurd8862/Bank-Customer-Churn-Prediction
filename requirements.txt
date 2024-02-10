@@ -5,3 +5,4 @@ scikit-learn
 xgboost
 warnings
 seaborn
+flask
