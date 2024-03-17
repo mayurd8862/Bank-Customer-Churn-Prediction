@@ -6,6 +6,12 @@ from src.mlproject.components.model_tranier import *
 from src.mlproject.components.data_transformation import *
 import sys
 
+from src.mlproject.pipelines.prediction_pipeline import CustomData, PredictPipeline
+
+import pandas as pd
+from src.mlproject.exception import CustomException
+from src.mlproject.utils import load_object
+
 
 if __name__=="__main__":
     logging.info("The execution has started")
@@ -21,6 +27,17 @@ if __name__=="__main__":
 
         model_trainer=ModelTrainer()
         print(model_trainer.initiate_model_trainer(train_arr,test_arr))
+
+        data = CustomData(619,'France','Female',51,2,0,1,1,1,1013478)
+        pred_df = data.get_data_as_data_frame()
+
+        predict_pipeline = PredictPipeline()
+        results = predict_pipeline.predict(pred_df)
+        # results = float(results)
+        if results[0]==1:
+            print("YES") 
+        else:
+            print("NO")
 
 
     except Exception as e:

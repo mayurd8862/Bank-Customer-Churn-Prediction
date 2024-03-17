@@ -1,42 +1,3 @@
-# from flask import Flask, request, render_template
-# # from flask import 
-# from src.mlproject.pipelines.prediction_pipeline import CustomData, PredictPipeline
-
-# application = Flask(__name__)
-# app = application
-
-# # Route for a home page
-# # @app.route('/')
-# # def index():
-# #     return render_template('test.html')
-
-# # Route for predicting data
-# @app.route('/', methods=['GET', 'POST'])
-# def predict_datapoint():
-    
-#     if request.method == 'GET':
-#         return render_template('result.html')
-#     else:
-#         data = CustomData(
-#             age=float(request.form.get('age')),
-#             sex=request.form.get('sex'),
-#             bmi=float(request.form.get('bmi')),
-#             children=float(request.form.get('children')),
-#             smoker=request.form.get('smoker'),
-#             region=request.form.get('region')
-#         )
-#         pred_df = data.get_data_as_data_frame()
-
-#         predict_pipeline = PredictPipeline()
-#         results = predict_pipeline.predict(pred_df)
-
-#         # Include the form values in the rendered template
-#         return render_template('result.html', results="{:.2f}".format(results[0]), age=data.age, sex=data.sex, bmi=data.bmi, children=data.children, smoker=data.smoker, region=data.region)
-
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=8080)
-    
-
 
 
 from flask import Flask, request, render_template
@@ -50,30 +11,49 @@ app = application
 def predict_datapoint():
     
     if request.method == 'GET':
-        return render_template('result.html')
+        # return render_template('result.html')
+        return render_template('test.html')
     else:
+
+        # CreditScore = int(request.form.get('CreditScore'))
+        # Geography = request.form.get('Geography')
+        # Gender = request.form.get('Gender')
+        # Age = int(request.form.get('Age'))
+        # Tenure = int(request.form.get('Tenure')) if request.form.get('Tenure') else None
+        # Balance = int(request.form.get('Balance')) if request.form.get('Balance') else None
+        # NumOfProducts = int(request.form.get('NumOfProducts')) if request.form.get('NumOfProducts') else None
+        # HasCrCard = request.form.get('HasCrCard')
+        # IsActiveMember = request.form.get('IsActiveMember')
+        # EstimatedSalary = int(request.form.get('EstimatedSalary')) if request.form.get('EstimatedSalary') else None
+
+
         data = CustomData(
             CreditScore=float(request.form.get('CreditScore')),
             Geography=request.form.get('Geography'),
             Gender=request.form.get('Gender'),
             Age=int(request.form.get('Age')),
-            Tenure=int(request.form.get('Tenure')),
-            Balance=float(request.form.get('Balance')),
-            NumOfProducts=int(request.form.get('NumOfProducts')),
+            Tenure=int(request.form.get('Tenure')) if request.form.get('Tenure') else None,
+            Balance=float(request.form.get('Balance')) if request.form.get('Balance') else None,
+            NumOfProducts=int(request.form.get('NumOfProducts')) if request.form.get('NumOfProducts') else None,
             HasCrCard=int(request.form.get('HasCrCard')),
             IsActiveMember=int(request.form.get('IsActiveMember')),
-            EstimatedSalary=float(request.form.get('EstimatedSalary'))
+            EstimatedSalary=float(request.form.get('EstimatedSalary')) if request.form.get('EstimatedSalary') else None
         )
         pred_df = data.get_data_as_data_frame()
 
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
 
+        if results[0]==1:
+            otpt = "Customer will LEAVE the bank"
+        else:
+            otpt = "Customer will NOT LEAVE the bank"
+
         # Include the form values in the rendered template
-        return render_template('result.html', results="{:.2f}".format(results[0]), **request.form)
+        # return render_template('result.html', results=(results[0]), **request.form)
+        return render_template('test.html', results=otpt, **request.form)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
-
+    app.run(host="0.0.0.0", port=8080, debug=True)
 
 # http://127.0.0.1:5000/

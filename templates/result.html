@@ -1,10 +1,10 @@
 <html>
 <head>
-    <title>Insurance Cost Prediction</title>
+    <title>Bank Customer Churn Prediction</title>
 </head>
 <body>
     <div class="insurance-form">
-        <h1>Insurance Cost Prediction</h1>
+        <h1>bank churn Prediction</h1>
         <form action="{{ url_for('predict_datapoint')}}" method="post">
             <div class="mb-3">
                 <label class="form-label">Credit Score</label>
@@ -64,11 +64,11 @@
                 <input class="form-control" type="number" name="EstimatedSalary" placeholder="Enter your estimated salary" min="0" required />
             </div>
             <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Predict Insurance Cost" required />
+                <input class="btn btn-primary" type="submit" value="Submit and Check" required />
             </div>
         </form>
         <h2>
-            The predicted insurance cost is {{results}}
+            {{results}}
         </h2>
     </div>
 </body>
