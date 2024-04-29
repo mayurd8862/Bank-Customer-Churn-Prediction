@@ -2,7 +2,7 @@ pandas
 numpy
 matplotlib
 scikit-learn
-xgboost
+xgboost==1.4.2
 warnings
 seaborn
 flask
