@@ -5,6 +5,7 @@ from src.mlproject.exception import CustomException
 from src.mlproject.utils import load_object
 
 
+
 class PredictPipeline:
     def __init__(self):
         pass
