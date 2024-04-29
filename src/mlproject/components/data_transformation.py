@@ -30,7 +30,7 @@ class DataTransformation:
         '''
 
         try:
-            numerical_columns = ['CreditScore', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard','IsActiveMember', 'EstimatedSalary']
+            numerical_columns = ['CreditScore', 'Age', 'Tenure', 'Balance', 'HasCrCard','IsActiveMember', 'EstimatedSalary']
             categorical_columns = ['Geography', 'Gender']
 
             num_pipeline=Pipeline(steps=[
@@ -71,7 +71,7 @@ class DataTransformation:
             preprocessing_obj=self.get_data_transformer_object()
 
             target_column_name="Exited"
-            col_to_drop = ['CustomerId','RowNumber','Surname','Exited']
+            col_to_drop = ['CustomerId','RowNumber','Surname','Exited','NumOfProducts']
             # numerical_columns = ["writing_score", "reading_score"]
 
             ## divide the train dataset to independent and dependent feature

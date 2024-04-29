@@ -11,22 +11,34 @@
       crossorigin="anonymous"
     ></script>
 
-    
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Replace {{ variables }} with actual values or placeholders
-            document.getElementsByName("CreditScore")[0].value = {{ CreditScore }};
-            document.getElementsByName("Geography")[0].value = "{{ Geography }}";
-            document.getElementsByName("Gender")[0].value = "{{ Gender }}";
-            document.getElementsByName("Age")[0].value = {{ Age }};
-            document.getElementsByName("Tenure")[0].value = {{ Tenure }};
-            document.getElementsByName("Balance")[0].value = {{ Balance }};
-            document.getElementsByName("NumOfProducts")[0].value = {{ NumOfProducts }};
-            document.getElementsByName("HasCrCard")[0].value = "{{ HasCrCard }}";
-            document.getElementsByName("IsActiveMember")[0].value = "{{ IsActiveMember }}";
-            document.getElementsByName("EstimatedSalary")[0].value = {{ EstimatedSalary }};
+      document.addEventListener("DOMContentLoaded", function () {
+        // Replace {{ variables }} with actual values or placeholders
+        document.getElementsByName("CreditScore")[0].value = "{{ CreditScore }}";
+        document.getElementsByName("Geography")[0].value = "{{ Geography }}";
+        document.getElementsByName("Gender")[0].value = "{{ Gender }}";
+        document.getElementsByName("Age")[0].value = "{{ Age }}";
+        document.getElementsByName("Tenure")[0].value = "{{ Tenure }}";
+        document.getElementsByName("Balance")[0].value = "{{ Balance }}";
+        document.getElementsByName("HasCrCard")[0].value = "{{ HasCrCard }}";
+        document.getElementsByName("IsActiveMember")[0].value = "{{ IsActiveMember }}";
+        document.getElementsByName("EstimatedSalary")[0].value = "{{ EstimatedSalary }}";
+        document.getElementsByName("NumOfProducts")[0].value = "{{ NumOfProducts }}";
+  
+        // Handling form submission
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent page reload
+          
+          // Perform form submission here (AJAX call or any other method)
+          // Update the result div with the response
+          var resultDiv = document.querySelector('.result h3');
+          resultDiv.textContent = "{{results}}"; // Update with actual result
         });
+      });
     </script>
+
+
 
     <link rel="stylesheet" href="static/css/style.css" />
     <title>BankShield</title>
@@ -60,6 +72,7 @@
                 required
               />
             </div>
+            
             <div class="input-field">
               <i class="fas fa-globe"></i>
               <select
@@ -67,9 +80,10 @@
                 class="scrollable-input"
                 name="Geography"
                 placeholder="Geography"
+
               >
 
-                <option class="placeholder" selected disabled value="">Select your country</option>
+                <option value="" disabled selected>Select Country</option>
                 <option value="France">France</option>
                 <option value="Spain">Spain</option>
                 <option value="Germany">Germany</option>
@@ -105,8 +119,8 @@
             <div class="input-field">
               <i class="fas fa-business-time"></i>
               <input
-                type="Tenure"
-                name="Age"
+                type="number"
+                name="Tenure"
                 min="0"
                 placeholder="Tenure"
                 required
@@ -116,8 +130,8 @@
             <div class="input-field">
               <i class="fas fa-dollar-sign"></i>
               <input
-                type="Balance"
-                name="Age"
+                type="number"
+                name="Balance"
                 min="0"
                 placeholder="Balance"
                 required
@@ -132,7 +146,7 @@
                 name="HasCrCard"
                 placeholder="Has Credit Card"
               >
-                <option value="" disabled selected>Have Credit Card</option>
+                <option value="" selected disabled>Credit Card</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select>
@@ -146,7 +160,8 @@
                 name="IsActiveMember"
                 placeholder="Is Active Member"
               >
-                <option value="" disabled selected>Active Member</option>
+
+                <option value="" disabled selected>Is Active Member</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select>
@@ -164,8 +179,6 @@
               />
             </div>
 
-
-            
             <input type="submit" class="btn" value="Predict" id="predict-btn" />
             
             <div class="result">

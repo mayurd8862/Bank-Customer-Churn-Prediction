@@ -34,7 +34,7 @@ class CustomData:
         Age: int,
         Tenure: int,
         Balance: int,
-        NumOfProducts: int,
+        # NumOfProducts: int,
         HasCrCard: int,
         IsActiveMember: int,
         EstimatedSalary: int):
@@ -51,7 +51,7 @@ class CustomData:
 
         self.Balance= Balance	
 
-        self.NumOfProducts= NumOfProducts
+        # self.NumOfProducts= NumOfProducts
 
         self.HasCrCard = HasCrCard
 
@@ -68,7 +68,7 @@ class CustomData:
                 "Age": [self.Age],
                 "Tenure": [self.Tenure],
                 "Balance": [self.Balance],
-                "NumOfProducts": [self.NumOfProducts],
+                # "NumOfProducts": [self.NumOfProducts],
                 "HasCrCard": [self.HasCrCard],
                 "IsActiveMember": [self.IsActiveMember],
                 "EstimatedSalary": [self.EstimatedSalary]

@@ -15,18 +15,6 @@ def predict_datapoint():
         return render_template('test.html')
     else:
 
-        # CreditScore = int(request.form.get('CreditScore'))
-        # Geography = request.form.get('Geography')
-        # Gender = request.form.get('Gender')
-        # Age = int(request.form.get('Age'))
-        # Tenure = int(request.form.get('Tenure')) if request.form.get('Tenure') else None
-        # Balance = int(request.form.get('Balance')) if request.form.get('Balance') else None
-        # NumOfProducts = int(request.form.get('NumOfProducts')) if request.form.get('NumOfProducts') else None
-        # HasCrCard = request.form.get('HasCrCard')
-        # IsActiveMember = request.form.get('IsActiveMember')
-        # EstimatedSalary = int(request.form.get('EstimatedSalary')) if request.form.get('EstimatedSalary') else None
-
-
         data = CustomData(
             CreditScore=float(request.form.get('CreditScore')),
             Geography=request.form.get('Geography'),
@@ -34,7 +22,7 @@ def predict_datapoint():
             Age=int(request.form.get('Age')),
             Tenure=int(request.form.get('Tenure')) if request.form.get('Tenure') else None,
             Balance=float(request.form.get('Balance')) if request.form.get('Balance') else None,
-            NumOfProducts=int(request.form.get('NumOfProducts')) if request.form.get('NumOfProducts') else None,
+            # NumOfProducts=int(request.form.get('NumOfProducts')) if request.form.get('NumOfProducts') else None,
             HasCrCard=int(request.form.get('HasCrCard')),
             IsActiveMember=int(request.form.get('IsActiveMember')),
             EstimatedSalary=float(request.form.get('EstimatedSalary')) if request.form.get('EstimatedSalary') else None

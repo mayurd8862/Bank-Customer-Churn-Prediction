@@ -28,7 +28,7 @@ if __name__=="__main__":
         model_trainer=ModelTrainer()
         print(model_trainer.initiate_model_trainer(train_arr,test_arr))
 
-        data = CustomData(619,'France','Female',51,2,0,1,1,1,1013478)
+        data = CustomData(619,'France','Female',51,2,0,1,1,1013478)
         pred_df = data.get_data_as_data_frame()
 
         predict_pipeline = PredictPipeline()
