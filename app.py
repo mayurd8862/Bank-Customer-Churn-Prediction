@@ -10,6 +10,7 @@ app = application
 # Route for predicting data
 @app.route('/', methods=['GET', 'POST'])
 def predict_datapoint():
+
     
     if request.method == 'GET':
         # return render_template('result.html')
