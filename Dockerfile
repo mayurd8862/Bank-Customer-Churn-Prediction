@@ -1,24 +1,8 @@
-FROM python:3.11.4
-
-# Set working directory
+FROM python:3.8-slim-buster
 WORKDIR /app
-
-# Copy application code
 COPY . /app
 
-# Install awscli using apt
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        awscli \
-        ffmpeg \
-        libsm6 \
-        libxext6 \
-        unzip \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt update -y && apt install awscli -y
 
-# Install Python dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Command to run the application
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 unzip -y && pip install -r requirements.txt
 CMD ["python3", "app.py"]
