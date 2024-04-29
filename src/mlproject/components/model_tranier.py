@@ -9,7 +9,7 @@ import numpy as np
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.tree import DecisionTreeClassifier
+# from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
@@ -45,7 +45,7 @@ class ModelTrainer:
             models = {
                 "Logistic Regression": LogisticRegression(),
                 "K-Neighbors Classifier": KNeighborsClassifier(),
-                "Decision Tree Classifier": DecisionTreeClassifier(),
+                # "Decision Tree Classifier": DecisionTreeClassifier(),
                 "Random Forest Classifier": RandomForestClassifier(),
                 "AdaBoost Classifier": AdaBoostClassifier()
             }
