@@ -245,6 +245,7 @@
                 Welcome to BankShield! 🛡️💰 Our mission is to safeguard customer relationships by predicting churn for banks. With advanced machine learning models, we analyze customer data to identify those at risk of leaving.       
             </p>
             <button class="btn transparent" id="sign-up-btn">ABOUT</button>
+            <button class="btn transparent" id="eda_btn">EDA</button>
           </div>
           <img src="static/img/log.svg" class="image" alt="" />
         </div>
@@ -264,5 +265,10 @@
     </div>
 
     <script src="static/js/app.js"></script>
+    <script>
+      document.getElementById("eda_btn").addEventListener("click", function() {
+          window.location.href = "https://bankshield-eda.streamlit.app/";
+      });
+    </script>
   </body>
 </html>
