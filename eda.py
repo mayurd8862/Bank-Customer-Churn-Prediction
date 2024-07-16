@@ -1,5 +1,5 @@
-
 import streamlit as st
+import os
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -203,3 +203,28 @@ fig.update_layout(title='Correlation Heatmap')
 # Display the chart in Streamlit
 st.write("### Correlation Heatmap")
 st.plotly_chart(fig)
+
+
+st.header("Evaluation Matrics of different Models")
+# Evaluation Matrics of different Models
+
+
+# Path to the 'artifacts' folder
+artifacts_folder = 'artifacts'
+
+# List all JSON files in the 'artifacts' folder
+json_files = [file for file in os.listdir(artifacts_folder) if file.endswith('.json')]
+
+# Read each JSON file, convert it to a DataFrame, and display it as a table
+for json_file in json_files:
+    file_path = os.path.join(artifacts_folder, json_file)
+    
+    # Read the JSON file into a DataFrame
+    report_df = pd.read_json(file_path)
+    
+    # Display the DataFrame as a table in Streamlit
+    st.write(f"### {json_file.replace('_classification_report.json', '')}")
+    st.dataframe(report_df)
+
+if not json_files:
+    st.write("No JSON files found in the artifacts folder.")
