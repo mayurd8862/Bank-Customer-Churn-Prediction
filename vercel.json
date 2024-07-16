@@ -17,6 +17,7 @@
     ],
     "ignore": [
         "app",
+        "venv",
         "notebook",
         ".vercel",
         "logs",
